@@ -14,5 +14,9 @@ router.delete('/deleteUser/:id', helpers.check_token, userController.deleteUserB
 
 // NOTE: category
 router.post('/createCategory', helpers.check_token, categoryController.createCategory)
+router.get('/allCategory', helpers.check_token, categoryController.getAllCategory)
+router.get('/detailCategory/:id', helpers.check_token, categoryController.getCategoryById)
+router.put('/editCategory/:id', helpers.check_token, categoryController.editCategoryById)
+router.delete('/deleteCategory/:id', helpers.check_token, categoryController.deleteCategoryById)
 
 module.exports = router
