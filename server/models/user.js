@@ -24,7 +24,11 @@ let userSchema = new Schema({
   phone: String,
   image_url: String,
   created_at: {
-    type: String,
+    type: Date,
+    default: Date.now()
+  },
+  updated_at: {
+    type: Date,
     default: Date.now()
   },
   token: String,

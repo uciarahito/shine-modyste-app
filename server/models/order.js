@@ -7,13 +7,16 @@ let orderSchema = new Schema({
     ref: 'User'
   }],
   code_order: String,
-  item: [{
+  itemlist: [{
     type: Schema.Types.ObjectId,
     ref: 'Item'
   }],
-  created_at: {
-    type: String,
-    default: Date.now()
+  created_at: Date,
+  update_at: Date,
+  due_date: Date,
+  days: {
+    type: Number,
+    default: 6
   }
 })
 

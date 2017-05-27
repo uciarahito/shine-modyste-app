@@ -3,10 +3,10 @@ const Schema = mongoose.Schema
 
 let itemSchema = new Schema({
   name: String,
-  category: [{
+  category: {
     type: Schema.Types.ObjectId,
     ref: 'Category'
-  }],
+  },
   price: Number,
   description: String,
   color: String,
@@ -14,11 +14,11 @@ let itemSchema = new Schema({
   image_url: String,
   stock: Number,
   created_at: {
-    type: String,
+    type: Date,
     default: Date.now()
   },
   updated_at: {
-    type: String,
+    type: Date,
     default: Date.now()
   }
 })

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 let userController = require('../controllers/userController')
 let categoryController = require('../controllers/categoryController')
+let itemController = require('../controllers/itemController')
 let helpers = require('../helpers/helpers')
 
 // NOTE: user
@@ -18,5 +19,12 @@ router.get('/allCategory', helpers.check_token, categoryController.getAllCategor
 router.get('/detailCategory/:id', helpers.check_token, categoryController.getCategoryById)
 router.put('/editCategory/:id', helpers.check_token, categoryController.editCategoryById)
 router.delete('/deleteCategory/:id', helpers.check_token, categoryController.deleteCategoryById)
+
+// NOTE: item
+router.post('/createItem', helpers.check_token, itemController.createItem)
+router.get('/allItem', itemController.getAllItem)
+router.get('/detailItem/:id', itemController.getItemById)
+router.put('/editItem/:id', helpers.check_token, itemController.editItemById)
+router.delete('/deleteItem/:id', helpers.check_token, itemController.deleteItemById)
 
 module.exports = router
