@@ -2,18 +2,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let orderSchema = new Schema({
-  user: [{
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }],
+  },
   code_order: String,
   itemlist: [{
     type: Schema.Types.ObjectId,
     ref: 'Item'
   }],
-  created_at: Date,
-  update_at: Date,
   due_date: Date,
+  created_at: {
+    type: Date,
+    default: Date.now()
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now()
+  },
   days: {
     type: Number,
     default: 6
@@ -21,4 +27,4 @@ let orderSchema = new Schema({
 })
 
 let Order = mongoose.model('Order', orderSchema)
-modules.exports = Order
+module.exports = Order

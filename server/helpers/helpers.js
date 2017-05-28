@@ -15,4 +15,13 @@ methods.check_token = (req, res, next) => {
   })
 }
 
+methods.dueDate = (days) => {
+  let nowDate = new Date()
+  let convertNowDate = Number(new Date(nowDate))
+  let convertDays = Number((days*1000*60*60*24))
+  console.log('Now: '+convertNowDate);
+  console.log('Days: '+convertDays);
+  return new Date(convertNowDate + convertDays)
+}
+
 module.exports = methods

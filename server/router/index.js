@@ -3,6 +3,7 @@ const router = express.Router()
 let userController = require('../controllers/userController')
 let categoryController = require('../controllers/categoryController')
 let itemController = require('../controllers/itemController')
+let orderController = require('../controllers/orderController')
 let helpers = require('../helpers/helpers')
 
 // NOTE: user
@@ -26,5 +27,12 @@ router.get('/allItem', itemController.getAllItem)
 router.get('/detailItem/:id', itemController.getItemById)
 router.put('/editItem/:id', helpers.check_token, itemController.editItemById)
 router.delete('/deleteItem/:id', helpers.check_token, itemController.deleteItemById)
+
+// NOTE: order
+router.post('/createOrder', orderController.createOrder)
+router.get('/allOrder', orderController.getAllOrder)
+router.get('/detailOrder/:id', orderController.getOrderById)
+router.put('/editOrder/:id', orderController.editOrderById)
+router.post('/addItemOrder/:id', orderController.addItemOrder)
 
 module.exports = router
