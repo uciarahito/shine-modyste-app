@@ -51,7 +51,7 @@ methods.addItemOrder = (req, res) => {
             if (newItem == item._id) {
               item.stock -= 1
               item.save()
-              
+
               record.itemlist.push(req.body.itemlist)
               record.save(err => {
                 res.send(record)
@@ -136,6 +136,19 @@ methods.editOrderById = (req, res) => {
   })
 }
 
-
+methods.deleteOrderById = (req, res) => {
+  Order.findById(req.params.id, (err, record) => {
+    if (err) res.json({err})
+    console.log('Get order by id success');
+    console.log(record);
+    Order.deleteOne({
+      "_id": record._id
+    }, (error, result) => {
+      if (error) res.json({error})
+      console.log('Delete order by id success');
+      res.send(result)
+    })
+  })
+}
 
 module.exports = methods
