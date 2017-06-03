@@ -14,23 +14,21 @@ methods.createOrder = (req, res) => {
 
   Item.find({}, (err, items) => {
     items.forEach(item => {
-      req.body.itemlist.forEach(item => {
-        console.log(item);
+      req.body.itemlist.forEach(itemList => {
+        console.log(itemList);
         console.log(item._id);
-        if (item == item._id) {
+        if (itemList == item._id) {
           item.stock -= 1
           item.save()
-
-          newOrder.save((err, record) => {
-            if (err) res.json({err})
-            console.log("Create order success");
-            console.log(record);
-            res.send(record)
-          })
-        } else {
-          res.send('Stock book is empty')
         }
       })
+    })
+
+    newOrder.save((err, record) => {
+      if (err) res.json({err})
+      console.log("Create order success");
+      console.log(record);
+      res.send(record)
     })
   })
 }
@@ -72,6 +70,24 @@ methods.getAllOrder = (req, res) => {
     console.log('Get All Order success');
     console.log(records);
     res.send(records)
+  })
+}
+
+methods.getAllOrderByUser = (req, res) => {
+  let decoded = helpers.checkUser(req.headers.token)
+  Order.find({})
+  .populate('user itemlist')
+  .exec((err, orders) => {
+    console.log('get all order by user success');
+    console.log(orders);
+    let pushData = []
+    orders.forEach(order => {
+      console.log(order.user._id);
+      if (order.user._id == decoded.id) {
+        pushData.push(order)
+      }
+    })
+    res.send(pushData)
   })
 }
 

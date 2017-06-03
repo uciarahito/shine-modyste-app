@@ -15,6 +15,15 @@ methods.check_token = (req, res, next) => {
   })
 }
 
+methods.checkUser = (token) => {
+  try {
+    let decoded = jwt.verify(token, process.env.SECRET_KEY)
+    return decoded
+  } catch(error){
+    return ({error})
+  }
+}
+
 methods.dueDate = (days) => {
   let nowDate = new Date()
   let convertNowDate = Number(new Date(nowDate))

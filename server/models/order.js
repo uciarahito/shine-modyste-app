@@ -11,6 +11,10 @@ let orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Item'
   }],
+  count: {
+    type: Number,
+    default: 1
+  },
   due_date: Date,
   created_at: {
     type: Date,

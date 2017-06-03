@@ -31,6 +31,7 @@ router.delete('/deleteItem/:id', helpers.check_token, itemController.deleteItemB
 // NOTE: order
 router.post('/createOrder', orderController.createOrder)
 router.get('/allOrder', orderController.getAllOrder)
+router.get('/allOrderByUser', orderController.getAllOrderByUser)
 router.get('/detailOrder/:id', orderController.getOrderById)
 router.put('/editOrder/:id', orderController.editOrderById)
 router.post('/addItemOrder/:id', orderController.addItemOrder)

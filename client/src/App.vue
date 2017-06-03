@@ -1,17 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <Navbar></Navbar>
+    <Search></Search>
+    <Carousel></Carousel>
+    <router-view></router-view>
+    <TopItem></TopItem>
+    <Content></Content>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Navbar from './components/Navbar'
+import Search from './components/Search'
+import Carousel from './components/Carousel'
+import Content from './components/Content'
+import TopItem from './components/TopItem'
+import Footer from './components/Footer'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Navbar,
+    Search,
+    Carousel,
+    Content,
+    TopItem,
+    Footer
   }
 }
 </script>
@@ -23,6 +38,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 </style>
